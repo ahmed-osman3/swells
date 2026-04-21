@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ivory: #fdfcf8;
+  --color-sage: #516641;
+  --color-blush: #d06250;
+}
+
+html,
+body {
+  background: var(--color-ivory);
+  color: #1f1d1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #688054;
+  color: #fdfcf8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .container-edge {
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply text-[11px] uppercase tracking-[0.28em] font-medium text-sage-700;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-charcoal text-ivory-50 px-7 py-3.5 text-[13px] uppercase tracking-[0.22em] font-medium transition-all duration-300 hover:bg-sage-700 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border border-charcoal text-charcoal px-7 py-3.5 text-[13px] uppercase tracking-[0.22em] font-medium transition-all duration-300 hover:bg-charcoal hover:text-ivory-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-1.5 text-[13px] uppercase tracking-[0.22em] font-medium text-charcoal transition-colors hover:text-sage-700;
+  }
+
+  .link-underline {
+    @apply relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .bg-noise {
+    background-image:
+      radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      radial-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+    background-size: 4px 4px, 8px 8px;
+    background-position: 0 0, 2px 2px;
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Reveal on scroll animation baseline */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
